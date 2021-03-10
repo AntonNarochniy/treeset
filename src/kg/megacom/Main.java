@@ -1,6 +1,7 @@
 package kg.megacom;
 
 
+import java.util.Comparator;
 import java.util.StringTokenizer;
 import java.util.TreeSet;
 
@@ -47,7 +48,14 @@ public class Main {
                 "Свои мне сказки говорил.\n" +
                 "\n" +
                 "Отрывок из поэмы «Руслан и Людмила».";
-        TreeSet<String> lukomorie = new TreeSet<>();
+        TreeSet<String> lukomorie = new TreeSet(new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                String first = o1.toString();
+                String second = o2.toString();
+                return second.compareTo(first);
+            }
+        });
         StringTokenizer st = new StringTokenizer(s, "A-Z !,?._'@;:«»—()…\"\t\n\r");
         System.out.println(st.countTokens());
         while (st.hasMoreTokens()) {
